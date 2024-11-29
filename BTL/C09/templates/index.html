@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dự đoán chữ số</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Dự đoán chữ số từ ảnh</h1>
+        <form action="/" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <button type="submit">Dự đoán</button>
+        </form>
+
+        <!-- Hiển thị kết quả -->
+        {% if prediction is not none and image_url is not none %}
+        <div class="result">
+            <h2>Kết quả dự đoán</h2>
+            <img src="{{ image_url }}" alt="Uploaded Image">
+            <p>Số được dự đoán: <strong>{{ prediction }}</strong></p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
